@@ -1,0 +1,15 @@
+certifi==2018.11.29
+chardet==3.0.4
+cycler==0.10.0
+idna==2.7
+kiwisolver==1.0.1
+matplotlib==3.0.2
+numpy==1.15.4
+pgi==0.0.11.2
+pycairo==1.18.0
+PyGObject==3.30.4
+pyparsing==2.3.0
+python-dateutil==2.7.5
+requests==2.20.1
+six==1.11.0
+urllib3==1.24.1
