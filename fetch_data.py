@@ -31,7 +31,8 @@ def get_24h_forecast_temps(city_id='2643743'):
     # api gives us every 3 hour until 5 days
     forecasts = forecasts[:9]
     ret = {}
-    for k, forecast in enumerate(forecasts):
-        temp_in_cel = forecast['main']['temp'] - 273.15
-        ret[k] = {'temp': "%.2f" % temp_in_cel, 'str_time': forecast['dt_txt']}
+    for forecast in forecasts:
+        # convert to Celsius
+        forecast['main']['cel_temp'] = round((float(forecast['main']['temp']) - 273.15), 2)
+        ret[forecast['dt']] = forecast
     return ret

@@ -28,8 +28,9 @@ def draw_chart_forcast(time_arr, val_arr):
 
     fig = Figure(figsize=(5,5), dpi=100)
     ax = fig.add_subplot(111)
-
-    ax.plot(time_arr, val_arr)
+    items = ax.plot(time_arr, val_arr)
+    for tick in ax.get_xticklabels():
+        tick.set_rotation(90)
 
     sw = Gtk.ScrolledWindow()
     myfirstwindow.add(sw)

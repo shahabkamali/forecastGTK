@@ -3,6 +3,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 from fetch_data import get_24h_forecast_temps
 from plotting import draw_chart_forcast
+import cache_helper as ch
 
 
 class ListBoxRowWithData(Gtk.ListBoxRow):
@@ -50,8 +51,15 @@ class MainWindow(Gtk.Window):
 
     def fetch_btn_clicked(self, widget):
         city_id = self.combo.get_active_id()
-        list_items = ['temp: %s  time:%s' % (forecasts['temp'],
-                                            forecasts['str_time']) for forecasts in get_24h_forecast_temps(city_id).values()]
+        cached_forecasts = ch.get(city_id)
+
+        forecasts = get_24h_forecast_temps(city_id)
+        if cached_forecasts:
+            forecasts = {**cached_forecasts, **forecasts}
+        ch.set(city_id, forecasts)
+
+        list_items = ['temp: %s  time:%s' % (forecast['main']['cel_temp'],
+                                            forecast['dt_txt']) for forecast in forecasts.values()]
 
         for w in self.forecast_listbox:
             self.forecast_listbox.remove(w)
@@ -63,7 +71,16 @@ class MainWindow(Gtk.Window):
         self.forecast_listbox.show_all()
 
     def draw_chart_clicked(self, widget):
-        draw_chart_forcast(['1', '2', '3', '4'], [15, 18, 14, 15])
+        city_id = self.combo.get_active_id()
+        cached_forecasts = ch.get(city_id)
+        if not cached_forecasts:
+            return None
+
+        val_list = [forecast['main']['cel_temp'] for forecast in cached_forecasts.values()]
+
+        time_list = [forecast['dt_txt'] for forecast in cached_forecasts.values()]
+
+        draw_chart_forcast(time_list, val_list)
 
 
 win = MainWindow()
