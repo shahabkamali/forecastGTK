@@ -55,8 +55,8 @@ class MainWindow(Gtk.Window):
 
         forecasts = get_24h_forecast_temps(city_id)
         if cached_forecasts:
-            forecasts = {**cached_forecasts, **forecasts}
-        ch.set(city_id, forecasts)
+            cached_forecasts = {**cached_forecasts, **forecasts}
+        ch.set(city_id, cached_forecasts)
 
         list_items = ['temp: %s  time:%s' % (forecast['main']['cel_temp'],
                                             forecast['dt_txt']) for forecast in forecasts.values()]
