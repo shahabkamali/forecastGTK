@@ -18,7 +18,7 @@ class MainWindow(Gtk.Window):
     def __init__(self):
         Gtk.Window.__init__(self, title="Forecast Program")
         self.set_border_width(10)
-
+        self.set_default_size(400, 500)
         self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)
         self.add(self.box)
 
