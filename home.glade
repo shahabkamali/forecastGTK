@@ -60,7 +60,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="time">
+                  <object class="GtkLabel" id="time0">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="label" translatable="yes">20:00</property>
