@@ -4,6 +4,8 @@ from gi.repository import Gtk
 from fetch_data import get_24h_forecast_temps
 from plotting import draw_chart_forcast
 import cache_helper as ch
+from datetime import datetime
+import json
 
 
 
@@ -24,9 +26,9 @@ class Handler(Gtk.Window):
         i = 0
         #print (forecasts)
         for k, v in forecasts.items():
-            print()
+            time = datetime.fromtimestamp(k)
             degrees_dict[i].set_text(str(v['main']['cel_temp']) + ' C')
-            time_dict[i].set_text(v['dt_txt'][12:16])
+            time_dict[i].set_text(time.strftime('%H:%M\n%A'))
             icon_dict[i].set_from_file('icons/small/%s.png' % v['weather'][0]['icon'])
             if i == 0:
                 icon_dict[i].set_from_file('icons/large/%s.png' % v['weather'][0]['icon'])
@@ -35,7 +37,7 @@ class Handler(Gtk.Window):
                 break
 
     def draw_chart_clicked(self, widget):
-        city_id = self.combo.get_active_id()
+        city_id = '2643743'  # self.combo.get_active_id()
         cached_forecasts = ch.get(city_id)
         if not cached_forecasts:
             return None
@@ -44,6 +46,10 @@ class Handler(Gtk.Window):
 
         time_list = [forecast['dt_txt'] for forecast in cached_forecasts.values()]
         draw_chart_forcast(time_list, val_list)
+
+    def onShow(self, widget):
+        # with open('city.list.json') as f:
+        #     cities = json.load(f)
 
 
 builder = Gtk.Builder()
@@ -92,7 +98,9 @@ time_dict = {
     8: builder.get_object("time8"),
 }
 
-####
+# combo
+combo_box = builder.get_object("combo_city")
+firstbox = builder.get_object("firstbox")
 
 window.show_all()
 

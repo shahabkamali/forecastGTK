@@ -4,19 +4,15 @@
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkListStore" id="liststore1">
     <columns>
-      <!-- column-name id -->
-      <column type="gint"/>
-      <!-- column-name name -->
+      <!-- column-name text -->
       <column type="gchararray"/>
     </columns>
     <data>
       <row>
-        <col id="0">2643743</col>
-        <col id="1" translatable="yes">London</col>
+        <col id="0" translatable="yes">London</col>
       </row>
       <row>
-        <col id="0">2950157</col>
-        <col id="1" translatable="yes">Berlin</col>
+        <col id="0" translatable="yes">Berlin</col>
       </row>
     </data>
   </object>
@@ -44,7 +40,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <child>
-              <object class="GtkBox" id="firstbox">
+              <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
@@ -123,8 +119,11 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">liststore1</property>
-                        <property name="column_span_column">1</property>
+                        <property name="row_span_column">0</property>
+                        <property name="column_span_column">0</property>
+                        <property name="active">0</property>
                         <property name="id_column">0</property>
+                        <property name="active_id">0</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>
