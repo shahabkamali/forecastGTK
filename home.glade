@@ -5,18 +5,22 @@
   <object class="GtkListStore" id="liststore1">
     <columns>
       <!-- column-name id -->
-      <column type="gint"/>
+      <column type="gchararray"/>
       <!-- column-name name -->
       <column type="gchararray"/>
     </columns>
     <data>
       <row>
-        <col id="0">2643743</col>
+        <col id="0" translatable="yes">2643743</col>
         <col id="1" translatable="yes">London</col>
       </row>
       <row>
-        <col id="0">2950157</col>
+        <col id="0" translatable="yes">2950157</col>
         <col id="1" translatable="yes">Berlin</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">2761369</col>
+        <col id="1" translatable="yes">Vienna</col>
       </row>
     </data>
   </object>
@@ -123,8 +127,17 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">liststore1</property>
-                        <property name="column_span_column">1</property>
+                        <property name="active">1</property>
+                        <property name="has_frame">False</property>
+                        <property name="has_entry">True</property>
+                        <property name="entry_text_column">1</property>
                         <property name="id_column">0</property>
+                        <property name="active_id">1</property>
+                        <child internal-child="entry">
+                          <object class="GtkEntry">
+                            <property name="can_focus">False</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -168,6 +181,9 @@
                 <property name="shrink">True</property>
               </packing>
             </child>
+            <style>
+              <class name="{background-color: blue}"/>
+            </style>
           </object>
           <packing>
             <property name="resize">False</property>
@@ -639,6 +655,9 @@
                 <property name="position">7</property>
               </packing>
             </child>
+            <style>
+              <class name="{background-color: blue}"/>
+            </style>
           </object>
           <packing>
             <property name="resize">True</property>
@@ -647,5 +666,8 @@
         </child>
       </object>
     </child>
+    <style>
+      <class name="background-color: white"/>
+    </style>
   </object>
 </interface>

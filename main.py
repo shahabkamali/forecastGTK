@@ -15,7 +15,7 @@ class Handler(Gtk.Window):
         Gtk.main_quit()
 
     def on_btn_fetch_clicked(self, widget):
-        city_id = '2643743'#self.combo.get_active_id()
+        city_id = combo_box.get_active_id()
         cached_forecasts = ch.get(city_id)
 
         forecasts = get_24h_forecast_temps(city_id)
@@ -24,7 +24,6 @@ class Handler(Gtk.Window):
         ch.set(city_id, cached_forecasts)
 
         i = 0
-        #print (forecasts)
         for k, v in forecasts.items():
             time = datetime.fromtimestamp(k)
             degrees_dict[i].set_text(str(v['main']['cel_temp']) + ' C')
@@ -37,7 +36,7 @@ class Handler(Gtk.Window):
                 break
 
     def draw_chart_clicked(self, widget):
-        city_id = '2643743'  # self.combo.get_active_id()
+        city_id = combo_box.get_active_id()
         cached_forecasts = ch.get(city_id)
         if not cached_forecasts:
             return None
@@ -48,6 +47,7 @@ class Handler(Gtk.Window):
         draw_chart_forcast(time_list, val_list)
 
     def onShow(self, widget):
+        pass
         # with open('city.list.json') as f:
         #     cities = json.load(f)
 
