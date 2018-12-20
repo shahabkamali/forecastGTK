@@ -15,4 +15,4 @@ python main.py
 
 ```
 
-![apppic text](https://github.com/shahabkamali/forecastGTK/apppic.png)
+![apppic text](https://github.com/shahabkamali/forecastGTK/blob/master/apppic.png)
