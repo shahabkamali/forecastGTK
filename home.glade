@@ -666,8 +666,5 @@
         </child>
       </object>
     </child>
-    <style>
-      <class name="background-color: white"/>
-    </style>
   </object>
 </interface>

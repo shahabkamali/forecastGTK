@@ -129,15 +129,9 @@
                         <property name="model">liststore1</property>
                         <property name="active">1</property>
                         <property name="has_frame">False</property>
-                        <property name="has_entry">True</property>
                         <property name="entry_text_column">1</property>
                         <property name="id_column">0</property>
                         <property name="active_id">1</property>
-                        <child internal-child="entry">
-                          <object class="GtkEntry">
-                            <property name="can_focus">False</property>
-                          </object>
-                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -181,9 +175,6 @@
                 <property name="shrink">True</property>
               </packing>
             </child>
-            <style>
-              <class name="{background-color: blue}"/>
-            </style>
           </object>
           <packing>
             <property name="resize">False</property>
