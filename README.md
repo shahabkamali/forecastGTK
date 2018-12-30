@@ -1,5 +1,5 @@
 # forecastGTK
-a simple GTK GUI for fetch the next 24 forecast using python and gtk
+a simple GTK GUI for fetching the next 24 forecast using python and gtk
 
 
 # installation
